@@ -1,17 +1,16 @@
 import { Component, inject } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
-import { CustomerComponent } from './customer/customer.component';
-import { CommonModule } from '@angular/common';
+import axios from 'axios';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-search',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,ReactiveFormsModule],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  imports: [ReactiveFormsModule],
+  templateUrl: './search.component.html',
+  styleUrl: './search.component.css'
 })
-export class AppComponent {
+export class SearchComponent {
   title = 'angularAPp';
   fb= inject(FormBuilder);
   router = inject(Router);
@@ -40,8 +39,27 @@ export class AppComponent {
     return documentNumber ? new Intl.NumberFormat().format(Number(documentNumber)) : '';
   }
 
-  onSubmit(): void{
+  async onSubmit(): Promise<void>{
     console.log( this.form.value)
-    this.router.navigate(['/customer'], { state: { userData: this.form.value } });
+    const { type, id } = this.form.value;
+    console.log(id)
+    //const response = await axios.post('http://localhost:8090/api',this.form.value);
+ 
+
+      const data=
+        {
+          firstName: "Jhon",
+          middleName: "Michael",
+          lastName: "Doe",
+          secondLastName: "Smith",
+          phone: "+1-555-1234",
+          address: "1234 Elm Street, Apt 5B",
+          cityOfResidence: "New York"
+      }
+      
+      this.router.navigate(['/customer'], { state: { userData: data } });
+    
+   
+   
   }
 }

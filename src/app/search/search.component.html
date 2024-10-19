@@ -1,0 +1,52 @@
+
+
+<div class="container mt-5">
+    <h2>Formulario de Búsqueda</h2>
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  
+      <div class="mb-2">
+        <label for="documentType" class="form-label">Tipo de documento</label>
+        <select class="form-select" id="type"  formControlName="type">
+          <option disabled selected>Seleccione un tipo de documento</option>
+          <option value="C">Cédula de ciudadanía</option>
+          <option value="P">Pasaporte</option>
+        </select>
+        @if(form.get("type")?.invalid && form.get("type")?.touched){
+          @if(form.get("type")?.hasError("required")){
+            <span class="text-danger">el campo es obligatorio</span>
+          }
+      }
+      </div>
+  
+      <div class="mb-2">
+        <label for="documentNumber" class="form-label">Número de documento</label>
+        <input class="form-control" id="id" placeholder="Ingrese su número de documento" formControlName="id"
+        (input)="formatDocumentNumber()"
+        [value]="getFormattedDocumentNumber()">
+  
+        @if(form.get("id")?.invalid && form.get("id")?.touched){
+            @if(form.get("id")?.hasError("required")){
+              <span class="text-danger">el campo es obligatorio</span>
+            }
+            @if(form.get("id")?.hasError("minlength")){
+              <span class="text-danger">El documento debe tener al menos 8 dígitos</span>
+            }
+            @if(form.get("id")?.hasError("maxlength")){
+              <span class="text-danger">El documento no puede tener más de 11 dígitos</span>
+            }
+            @if(form.get("id")?.hasError("pattern")){
+              <span class="text-danger">Solo se permiten números.</span>
+            }
+        }
+  
+        
+        
+  
+       
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="form.invalid">Buscar</button>
+    </form>
+    
+
+  </div>
+  

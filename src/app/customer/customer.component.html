@@ -1,0 +1,42 @@
+<div class="container mt-4">
+    <h2>Informacion Básica</h2>
+    <form>
+      <div class="form-group">
+        <label for="firstName">Primer Nombre</label>
+        <input type="text" class="form-control" id="firstName" [(ngModel)]="userData.firstName" name="firstName" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="middleName">Segundo Nombre</label>
+        <input type="text" class="form-control" id="middleName" [(ngModel)]="userData.middleName" name="middleName" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="lastName">Primer Apellido</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="userData.lastName" name="lastName" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="secondLastName">Segundo Apellido</label>
+        <input type="text" class="form-control" id="secondLastName" [(ngModel)]="userData.secondLastName" name="secondLastName" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="phone">Teléfono</label>
+        <input type="tel" class="form-control" id="phone" [(ngModel)]="userData.phone" name="phone" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="address">Dirección</label>
+        <input type="text" class="form-control" id="address" [(ngModel)]="userData.address" name="address" readonly>
+      </div>
+  
+      <div class="form-group">
+        <label for="cityOfResidence">Ciudad</label>
+        <input type="text" class="form-control" id="cityOfResidence" [(ngModel)]="userData.cityOfResidence" name="cityOfResidence" readonly>
+      </div>
+  
+      <button class="btn btn-primary" (click)="goBack()">Volver</button>
+    </form>
+  </div>
+  
